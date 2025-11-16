@@ -1,0 +1,417 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+body{
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+font-family: "Roboto", sans-serif;
+}
+
+
+
+.navSection{
+ display: flex;
+  justify-content: space-between;
+  align-items: center;
+background: linear-gradient(180deg, #007bff, #0056b3);
+  color: white;
+  padding: 0px 40px;
+  height:100px;
+  font-family: "Poppins", sans-serif;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.company{
+ font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+  .userAuth {
+  gap: 25px;
+}
+
+
+.authLink {
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+/* Hover effect for Login/Register */
+.authLink:hover {
+  color: #ffe082;
+  cursor: pointer;
+  transform: translateY(-2px);
+}
+
+/* Sidebar Container */
+.sideBarSection {
+  position: fixed;              /* stays fixed beside navbar */
+  top: 100px;                    /* adjust if your navbar height = 60px */
+  left: 0;
+  height: 100vh;   /* full height below navbar */
+  width: 15%;
+  min-width: 200px;
+  background: linear-gradient(180deg, #007bff, #0056b3);
+  color: white;
+  padding-top: 30px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  font-family: "Poppins", sans-serif;
+  transition: all 0.3s ease;
+  z-index: 999;
+  overflow-y: auto;
+}
+
+/* Remove bullet points & spacing for list */
+.sideBarSection ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Each list item */
+.sideBarSection ul li {
+  padding: 15px 25px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: background 0.3s, transform 0.2s;
+}
+
+/* Hover effect */
+.sideBarSection ul li:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: translateX(5px);
+}
+
+/* Active menu item */
+.sideBarSection ul li.active {
+  background-color: rgba(255, 255, 255, 0.25);
+  font-weight: 600;
+}
+
+/* Scrollbar styling (optional) */
+.sideBarSection::-webkit-scrollbar {
+  width: 6px;
+}
+.sideBarSection::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+/* Responsive: Collapse sidebar on small screens */
+@media (max-width: 768px) {
+  .sideBarSection {
+    position: fixed;
+    width: 60px;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+
+  .sideBarSection ul li {
+    text-align: center;
+    padding: 12px 10px;
+    font-size: 0.9rem;
+  }
+
+  .sideBarSection ul li:hover {
+    transform: none;
+  }
+}
+
+
+
+
+/* Login Section Wrapper */
+.loginSection {
+  margin-left: 15%;                 /* pushes away from sidebar */
+          
+  display: flex;
+  flex-direction: column;
+  justify-content: center;          /* center horizontally */
+  align-items: center;              /* center vertically */
+  min-height: calc(100vh - 100px);
+  background-color: #f4f6f8;        /* light grey background */
+  font-family: "Poppins", sans-serif;
+}
+
+/* Login Form Card */
+.loginForm {
+  background: #fff;
+  padding: 40px 50px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  min-width: 500px;
+  min-height:400px;
+
+  display: flex;
+  flex-direction: column;
+  
+  justify-content: center;
+}
+
+/* Title */
+
+.loginSection h3 {
+
+  
+  font-size: 1.8rem;
+  color: #007bff;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 100px;
+
+}
+
+
+/* Labels */
+.loginForm label {
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #333;
+}
+
+/* Inputs */
+.loginForm input {
+  padding: 14px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+/* Focus effect */
+.loginForm input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+/* Button */
+.loginForm button {
+  background: linear-gradient(90deg, #007bff, #00c6ff);
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover effect */
+.loginForm button:hover {
+  background: linear-gradient(90deg, #0056b3, #0099cc);
+  transform: translateY(-2px);
+}
+
+.passwordField {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.passwordField input {
+  width: 100%;
+  padding-right: 40px; /* leave space for the icon */
+}
+
+.eyeIcon {
+  position: absolute;
+  right: 10px;
+  margin-top: -13px;
+  cursor: pointer;
+  color: #007bff;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.eyeIcon:hover {
+  color: #0056b3;
+  transform: scale(1.1);
+}
+
+
+/* Checkbox Group Styling */
+.checkboxGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 20px;
+  justify-content: start; 
+
+}
+
+.checkboxGroup label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #f9f9f9;
+  border: 1px solid #ccc;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.95rem;
+
+}
+
+.checkboxGroup label:hover {
+  background-color: #eef5ff;
+  border-color: #007bff;
+}
+
+.checkboxGroup input[type='checkbox'] {
+  accent-color: #007bff;
+  width: 16px;
+  margin-top:20px;
+  height: 16px;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+
+.all-products-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 80px;
+  min-height: 70vh;
+}
+
+.no-products-text {
+  font-size: 18px;
+  color: #777;
+  text-align: center;
+}
+
+.product-table {
+  border-collapse: collapse;
+  width: 80%;
+  max-width: 900px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.product-table th,
+.product-table td {
+  text-align: center;
+  padding: 12px 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+.product-table th {
+  background-color: #1976d2;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.product-table tr:hover {
+  background-color: #f5f5f5;
+  transition: 0.2s ease-in-out;
+}
+
+.product-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.delete-btn {
+  background-color: #e53935;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.delete-btn:hover {
+  background-color: #c62828;
+}
+
+
+
+/* page not found styles */
+
+
+
+.nf-container {
+  width: 100%;
+  height: 100vh;
+  background: #f8f9fa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nf-content {
+  text-align: center;
+  padding: 30px;
+}
+
+.nf-image {
+  width: 220px;
+  animation: float 2.5s ease-in-out infinite;
+  margin-bottom: 20px;
+}
+
+.nf-title {
+  font-size: 90px;
+  font-weight: 700;
+  margin: 0;
+  color: #ff4757;
+}
+
+.nf-text {
+  font-size: 22px;
+  margin-bottom: 25px;
+  color: #555;
+}
+
+.nf-button {
+  display: inline-block;
+  padding: 12px 30px;
+  background: #1976d2;
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  border-radius: 8px;
+  transition: 0.3s ease;
+}
+
+.nf-button:hover {
+  background: #0d47a1;
+}
+
+/* Floating animation */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0px); }
+}
+
+
+
+
+
