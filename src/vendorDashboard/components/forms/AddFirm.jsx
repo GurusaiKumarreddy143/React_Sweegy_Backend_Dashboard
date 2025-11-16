@@ -73,6 +73,8 @@ const AddFirm = () => {
       setRegion([])
       setFirmName("")
       setArea("")
+      localStorage.setItem('firmId',data.firmId)
+      localStorage.setItem('vendorFirmName',data.firmNamenew)
       
     }else if(data.message ===  "firm already exits"){
       console.log("firm already exists , only one 1 firm for one vendor")

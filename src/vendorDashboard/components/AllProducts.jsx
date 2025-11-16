@@ -1,58 +1,77 @@
 import React, { useState, useEffect } from 'react';
 import { API_URL } from '../data/apiPath';
-import '../../App.css'; // 👈 create this CSS file
+import '../../App.css';
 
 const AllProducts = () => {
   const [products, setProducts] = useState([]);
+  const [message, setMessage] = useState(""); // message to show user
 
   const productHandler = async () => {
     const firmId = localStorage.getItem('firmId');
+
+    // 1️⃣ No firm created
+    if (!firmId || firmId === "null") {
+      setMessage("Please add your firm first.");
+      return;
+    }
+
     try {
       const response = await fetch(`${API_URL}/api/product/productById/${firmId}`);
-      const newProductsData = await response.json();
-      console.log(newProductsData);
-      setProducts(newProductsData.products);
+
+      if (!response.ok) {
+        setMessage("No products added.");
+        setProducts([]);
+        return;
+      }
+
+      const data = await response.json();
+      const items = data.products || [];
+
+      if (items.length === 0) {
+        setMessage("No products added.");
+      }
+
+      setProducts(items);
+
     } catch (error) {
-      console.error('failed to fetch products', error);
-      alert('failed to fetch products');
+      console.error("failed to fetch products", error);
+      setMessage("Server error.");
     }
   };
 
-  const handleDelete = async (id)=>{
-    const productId = id
-     try{
-        const response = await fetch(`${API_URL}/api/product/${productId}`,{
-            method:"DELETE"
-        })
+  const handleDelete = async (id) => {
+    try {
+      const response = await fetch(`${API_URL}/api/product/${id}`, {
+        method: "DELETE"
+      });
 
-     if (!response.ok) {
-      throw new Error("Failed to delete the product");
+      if (!response.ok) throw new Error("Delete failed");
+
+      alert("Product deleted successfully");
+
+      // Update UI
+      setProducts(products.filter((p) => p._id !== id));
+
+    } catch (error) {
+      console.error(error);
+      alert("Error deleting product");
     }
-
-        const data = await response.json()
-
-        console.log(data)
-        alert("delete successfully")
-
-        const newProducts = products.filter((item)=> item._id !== id )
-        setProducts(newProducts)
-        productHandler();
-
-     } catch(error){
-
-     }
-  }
+  };
 
   useEffect(() => {
     productHandler();
-    
   }, []);
 
   return (
     <div className="all-products-container">
-      {products.length === 0 ? (
-        <p className="no-products-text">No products added</p>
-      ) : (
+
+      {/* Show messages */}
+      {message && (
+        <p className="no-products-text">{message}</p>
+      )}
+
+      {/* Show table only if products exist */}
+      {products.length > 0 && (
         <table className="product-table">
           <thead>
             <tr>
@@ -62,11 +81,13 @@ const AllProducts = () => {
               <th>Delete</th>
             </tr>
           </thead>
+
           <tbody>
             {products.map((item) => (
               <tr key={item._id}>
                 <td>{item.productName}</td>
                 <td>{item.price}</td>
+
                 <td>
                   {item.image && (
                     <img
@@ -76,14 +97,18 @@ const AllProducts = () => {
                     />
                   )}
                 </td>
+
                 <td>
-                  <button className="delete-btn" onClick={()=>handleDelete(item._id)}>Delete</button>
+                  <button className="delete-btn" onClick={() => handleDelete(item._id)}>
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       )}
+
     </div>
   );
 };

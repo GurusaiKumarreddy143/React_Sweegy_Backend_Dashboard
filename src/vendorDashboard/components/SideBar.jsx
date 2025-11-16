@@ -1,13 +1,13 @@
 import React from 'react'
 
-const SideBar = ({showFirmHandler,showProductHandler,showProductsHandler,firmTitle}) => {
+const SideBar = ({showFirmHandler,showProductHandler,firmTitle,showAllProductsHandler}) => {
   return (
    <div className="sideBarSection">
     <ul>
       {firmTitle ?  <li onClick={showFirmHandler}>Add Firm</li> : ""}
        
         <li onClick={showProductHandler}>Add Product</li>
-        <li onClick={showProductsHandler}>All Products</li>
+        <li onClick={showAllProductsHandler}>All Products</li>
         <li>User Details</li>
     </ul>
    </div>

@@ -80,7 +80,7 @@ const [firmTitle,setFirmTitle]= useState(true)
     //   setShowAllProducts(false)
     // }
 
-    const showProductsHandler =()=>{
+    const showAllProductsHandler =()=>{
       if(showLogOut){
         setShowProduct(false)
       setShowFirm(false)
@@ -137,7 +137,7 @@ const handleLogOut = () => {
     <>
     <section className='landingSection'>
     <NavBar showLoginhandler={showLoginhandler} showRegisterHandler={showRegisterHandler} showLogOut={showLogOut} handleLogOut={handleLogOut} firmName={firmName}/>
-    <SideBar showFirmHandler={showFirmHandler} showProductHandler={showProductHandler} showProductsHandler={showProductsHandler} firmTitle={firmTitle}/>
+    <SideBar showFirmHandler={showFirmHandler} showProductHandler={showProductHandler}  firmTitle={firmTitle} showAllProductsHandler={showAllProductsHandler}/>
     <div className="mainContent">
 
         {showLogin &&  <Login   showLoginhandler={showLoginhandler}   setShowLogOut={setShowLogOut}  setFirmName={setFirmName} setFirmTitle={setFirmTitle}  />}
